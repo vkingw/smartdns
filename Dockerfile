@@ -1,6 +1,6 @@
 FROM alpine AS builder
 
-LABEL maintainer="Ghostry <ghostry.green@gmail.com>"
+LABEL maintainer="Vincent <alfa.king@gmail.com>"
 
 RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest \
   && export OS="linux" \
