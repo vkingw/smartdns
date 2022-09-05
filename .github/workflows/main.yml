@@ -7,6 +7,9 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+  
+env:
+   DOCKER_NAME: vincentking
 
 jobs:
   push_to_registry:
@@ -21,7 +24,6 @@ jobs:
           [ "$VERSION" == "master" ] && VERSION=latest
 
           repository=${{ github.repository }}
-          DOCKER_NAME=`vincentking`
           IMAGE_NAME=${{ DOCKER_NAME }}/${repository##*/}:$VERSION
 
           echo IMAGE_NAME=$IMAGE_NAME
