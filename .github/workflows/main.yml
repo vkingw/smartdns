@@ -21,8 +21,8 @@ jobs:
           [ "$VERSION" == "master" ] && VERSION=latest
 
           repository=${{ github.repository }}
-          dockerName="vincentking"
-          IMAGE_NAME=${{ dockerName }}/${repository##*/}:$VERSION
+          DOCKER_NAME=`vincentking`
+          IMAGE_NAME=${{ DOCKER_NAME }}/${repository##*/}:$VERSION
 
           echo IMAGE_NAME=$IMAGE_NAME
 
