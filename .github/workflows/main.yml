@@ -13,7 +13,7 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     env:
-      DOCKER_NAME: vincentking
+      DOCKER_NAME: "vincentking"
     steps:
       - name: get_image_name
         run: |
