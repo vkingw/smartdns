@@ -3,13 +3,18 @@ FROM arm64v8/debian
 
 LABEL maintainer="Vincent <alfa.king@gmail.com>"
 
-RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest \
-  && export OS="debian" \
-  && apt update \
-  && apt install -y wget \
-  && apt install -y curl \
-  && cd / \
-  && wget --tries=3 $(curl -s $URL | grep browser_download_url | egrep -o 'http.+\.\w+' | grep -i "$(uname -m)" | grep -m 1 -i "$(echo $OS)")
+RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest
+
+RUN export OS="debian"
+
+RUN apt update
+
+RUN apt install -y wget
+  
+RUN apt install -y curl \
+  && cd / 
+
+RUN wget --tries=3 $(curl -s $URL | grep browser_download_url | egrep -o 'http.+\.\w+' | grep -i "$(uname -m)" | grep -m 1 -i "$(echo $OS)")
   
 RUN dpkg -i smartdns.*.aarch64-debian-all.deb
 
