@@ -16,6 +16,13 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     
+        # Run steps on a matrix of 3 arch/distro combinations
+    strategy:
+      matrix:
+        include:
+          - arch: aarch64
+            distro: ubuntu18.04
+    
     steps:
       - name: get_image_name
         run: |
