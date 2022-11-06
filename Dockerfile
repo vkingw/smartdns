@@ -9,10 +9,12 @@ RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest \
   && apt install -y wget \
   && apt install -y curl \
   && cd / \
-  && wget --tries=3 $(curl -s $URL | grep browser_download_url | egrep -o 'http.+\.\w+' | grep -i "$(uname -m)" | grep -m 1 -i "$(echo $OS)") \
-  && dpkg -i smartdns.*.aarch64-debian-all.deb \
-  && apt clean \
-  && apt autoclean 
+  && wget --tries=3 $(curl -s $URL | grep browser_download_url | egrep -o 'http.+\.\w+' | grep -i "$(uname -m)" | grep -m 1 -i "$(echo $OS)")
+  
+RUN dpkg -i smartdns.*.aarch64-debian-all.deb
+
+RUN apt clean
+RUN apt autoclean 
 
 ADD start.sh /start.sh
 ADD config.conf /config.conf
