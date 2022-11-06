@@ -3,7 +3,7 @@ FROM arm64v8/alpine AS builder
 LABEL maintainer="Vincent <alfa.king@gmail.com>"
 
 RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest \
-  && export OS="linux" \
+  && export OS="arm" \
   && apk --no-cache --update add curl \
   && cd / \
   && wget --tries=3 $(curl -s $URL | grep browser_download_url | egrep -o 'http.+\.\w+' | grep -i "$(uname -m)" | grep -m 1 -i "$(echo $OS)") \
