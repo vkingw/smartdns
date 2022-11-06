@@ -14,14 +14,7 @@ env:
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
-    
-        # Run steps on a matrix of 3 arch/distro combinations
-    strategy:
-      matrix:
-        include:
-          - arch: aarch64
-            distro: ubuntu18.04
+    runs-on: buildjet-4vcpu-ubuntu-2204-arm
     
     steps:
       - name: get_image_name
