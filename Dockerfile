@@ -6,11 +6,11 @@ LABEL maintainer="Vincent <alfa.king@gmail.com>"
 RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest \
   && export OS="debian" \
   && apt update \
-  && apt install wget \
-  && apt install curl \
+  && apt install -y wget \
+  && apt install -y curl \
   && cd / \
   && wget --tries=3 $(curl -s $URL | grep browser_download_url | egrep -o 'http.+\.\w+' | grep -i "$(uname -m)" | grep -m 1 -i "$(echo $OS)") \
-  && dpkg -i smartdns.*.debian.all.deb \
+  && dpkg -i smartdns.*.aarch64-debian-all.deb \
   && apt clean \
   && apt autoclean 
 
